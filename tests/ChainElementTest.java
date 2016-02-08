@@ -1,8 +1,11 @@
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 import com.danilafe.markovlib.ChainElement;
+import com.danilafe.markovlib.ChainManager;
 
 /**
  * Standard JUnit tests to ensure chain elements are working as expected.
@@ -39,6 +42,21 @@ public class ChainElementTest {
 		assertEquals(chainElement.occuranceCount.size(), 1);
 		assertEquals(chainElement.relativeFrequency.size(), 1);
 		assertEquals(chainElement.getRandom(), adding);
+	}
+
+	@Test
+	/**
+	 * Test whether a chain can be generated.
+	 */
+	public void testSimpleString(){
+		String testString = "hello my name is daniel";
+		ChainManager<String> chainManager = new ChainManager<String>("__start__", "__end__");
+		chainManager.train(testString.split(" "));
+		ArrayList<String> output = chainManager.generateChain();
+		String concatString = "";
+		for(String s : output) concatString += s + " ";
+
+		assertEquals(concatString, testString + " ");
 	}
 
 }
