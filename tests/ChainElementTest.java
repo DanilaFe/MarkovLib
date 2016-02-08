@@ -1,4 +1,5 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 
@@ -57,6 +58,23 @@ public class ChainElementTest {
 		for(String s : output) concatString += s + " ";
 
 		assertEquals(concatString, testString + " ");
+	}
+
+	@Test
+	/**
+	 * Test whether a chain can be generated from two sets.
+	 */
+	public void testTwoStrings(){
+		String testStringA = "hello my name is daniel";
+		String testStringB = "hello my name is dylan";
+		ChainManager<String> chainManager = new ChainManager<String>("__start__", "__end__");
+		chainManager.train(testStringA.split(" "));
+		chainManager.train(testStringB.split(" "));
+		ArrayList<String> output = chainManager.generateChain();
+		String concatString = "";
+		for(String s : output) concatString += s + " ";
+
+		assertTrue(concatString.equals(testStringA + " ") || concatString.equals(testStringB + " "));
 	}
 
 }
