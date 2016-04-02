@@ -31,7 +31,7 @@ public class ChainElement<T> {
 
 	/**
 	 * Creates a new chain element with the given value.
-	 * @param value
+	 * @param value the value to initialize ith
 	 */
 	public ChainElement(T value) {
 		this.value = value;
@@ -60,7 +60,7 @@ public class ChainElement<T> {
 
 	/**
 	 * Adds the given item(s) to the element.
-	 * @param ts
+	 * @param ts the item to add
 	 */
 	public void add(T ... ts){
 		for(int i = 0; i < ts.length; i++) add(ts[i]);
